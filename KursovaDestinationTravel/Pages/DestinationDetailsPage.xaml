@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DestinationTravelAPP.Pages.DestinationDetailsPage"
+             Title="DestinationDetailsPage">
+
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="10" >
+
+            <Button Text="View Expenses" Clicked="ViewExpenses"/>
+
+            <Label Text="{Binding Destination.Country}"></Label>
+            
+
+            <Entry Placeholder="City" Text="{Binding Destination.City}" ClearButtonVisibility="WhileEditing" TextTransform="Uppercase" />
+            <DatePicker Date="{Binding Destination.StartDate, StringFormat='{0:MMM dd, yyyy}'}"/>
+            <Entry Placeholder="Duration (days)" Keyboard="Numeric" Text="{Binding Destination.Duration}" ClearButtonVisibility="WhileEditing"/>
+            <Label Text="{Binding Destination.EndDate, StringFormat='End Date: {0:MMM dd, yyyy}'}"/>
+            <Editor Placeholder="Purpose of Trip" Text="{Binding Destination.Purpose}" HeightRequest="80" />
+
+            <Label Text="{Binding Destination.Status}"/>
+            <Slider Minimum="1" Maximum="10" Value="{Binding Destination.Rating}" IsVisible="{Binding Destination.IsRatingVisible }"/>
+            <Label Text="{Binding Destination.Rating, StringFormat='Rating: {0:N0}'}" IsVisible="{Binding Destination.IsRatingVisible }"/>
+
+
+            <CollectionView ItemsSource="{Binding Forecast}"
+                ItemsLayout="HorizontalList"
+                Margin="0,10,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" BorderColor="Gray" CornerRadius="10" WidthRequest="120">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Date, StringFormat='Date: {0:ddd dd.MM}'}" FontAttributes="Bold" FontSize="14" />
+                                <Label Text="{Binding Temp, StringFormat='Temp: {0} °C'}" FontSize="13"/>
+                                <Label Text="{Binding Description}" FontSize="12"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Save" Clicked="AddDestination" />
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

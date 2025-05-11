@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DestinationTravelAPP.Pages.ExpensesPage"
+             Title="ExpensesPage">
+    <VerticalStackLayout Padding="10" Spacing="10">
+        <CollectionView ItemsSource="{Binding Expenses}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Gray" Margin="5" Padding="10">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Description}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Entry x:Name="DescriptionEntry" Placeholder="Description"/>
+        <Entry x:Name="AmountEntry" Placeholder="Amount" Keyboard="Numeric"/>
+
+        <Button Text="Add Expense" Clicked="AddExpense_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

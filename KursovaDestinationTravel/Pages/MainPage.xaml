@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="DestinationTravelAPP.Pages.MainPage"
+             Title="Travel Destination APP">
+
+
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Label Text="Alexander Videnov 20118083" FontSize="18" TextColor="White" />
+            <Button Text="Add Destination" Clicked="AddNewDestination"/>
+            <Label Text="Destinations: {Binding Destinations.Count}" FontSize="18" TextColor="White" />
+            <CollectionView ItemsSource="{Binding Destinations}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" CornerRadius="10">
+                            <Frame.Style>
+                                <Style TargetType="Frame">
+                                    <Setter Property="BackgroundColor" Value="Black" />
+                                    <Style.Triggers>
+                                        <DataTrigger TargetType="Frame" Binding="{Binding Status}" Value="draft">
+                                            <Setter Property="BackgroundColor" Value="Black" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Frame" Binding="{Binding Status}" Value="active">
+                                            <Setter Property="BackgroundColor" Value="Green" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Frame" Binding="{Binding Status}" Value="complete">
+                                            <Setter Property="BackgroundColor" Value="GreenYellow" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Frame.Style>
+
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <Label Text="{Binding Status}" FontAttributes="Italic" TextColor="White"/>
+                                    <Button Text="Active" Clicked="ActivateDestination" BackgroundColor="Green" TextColor="White"/>
+                                    <Button Text="Completed" Clicked="CompletedDestination" BackgroundColor="DarkGray" TextColor="White"/>
+                                </StackLayout>
+
+                                <Label Text="{Binding Country}" FontSize="24" FontAttributes="Bold" TextColor="White"/>
+                                <Label Text="{Binding City}" FontSize="20" TextColor="White"/>
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0:dd.MM.yyyy}'}" TextColor="White"/>
+                                <Label Text="{Binding EndDate, StringFormat='End: {0:MMM dd, yyyy}'}" TextColor="White"/>
+
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <Button Text="Edit" Clicked="EditDestination"/>
+                                    <Button Text="Delete" BackgroundColor="Red" TextColor="White" Clicked="DeleteDestination"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
