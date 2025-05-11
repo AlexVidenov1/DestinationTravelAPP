@@ -23,7 +23,6 @@ public partial class DestinationDetailsPage : ContentPage, INotifyPropertyChange
 
         Destination = destination;
         BindingContext = this;
-        //_ = LoadCountriesAsync();
         _ = LoadWeather();
     }
 
@@ -39,37 +38,6 @@ public partial class DestinationDetailsPage : ContentPage, INotifyPropertyChange
 
         OnPropertyChanged(nameof(Forecast));
     }
-
-    //private async Task LoadCountriesAsync()
-    //{
-    //    CountryPicker.ItemsSource = new List<string> { "Loading..." };
-    //    try
-    //    {
-    //        using HttpClient client = new();
-
-    //        string json = await client.GetStringAsync("https://restcountries.com/v3.1/all");
-
-    //        var options = new JsonSerializerOptions
-    //        {
-    //            PropertyNameCaseInsensitive = true
-    //        };
-
-    //        //convert a JSON string into a .NET object. It belongs to the System.Text.Json namespace, which provides high-performance JSON serialization and deserialization.
-    //        var c = JsonSerializer.Deserialize<List<Country>>(json, options); //JsonConvert.DeserializeObject<List<Country>>(json);
-    //        countries = c?.ConvertAll(x => x.Name.Common) ?? new List<string> { "No data" };
-
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        countries = new List<string> { "Error loading countries" + ex.Message };
-
-    //    }
-
-
-    //    CountryPicker.ItemsSource = countries;
-
-    //}
-
 
     private async void AddDestination(object sender, EventArgs e)
     {

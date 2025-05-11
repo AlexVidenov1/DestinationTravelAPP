@@ -19,13 +19,13 @@
                                     <Setter Property="BackgroundColor" Value="Black" />
                                     <Style.Triggers>
                                         <DataTrigger TargetType="Frame" Binding="{Binding Status}" Value="draft">
-                                            <Setter Property="BackgroundColor" Value="Black" />
+                                            <Setter Property="BackgroundColor" Value="DarkGray" />
                                         </DataTrigger>
                                         <DataTrigger TargetType="Frame" Binding="{Binding Status}" Value="active">
                                             <Setter Property="BackgroundColor" Value="Green" />
                                         </DataTrigger>
                                         <DataTrigger TargetType="Frame" Binding="{Binding Status}" Value="complete">
-                                            <Setter Property="BackgroundColor" Value="GreenYellow" />
+                                            <Setter Property="BackgroundColor" Value="Grey" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
